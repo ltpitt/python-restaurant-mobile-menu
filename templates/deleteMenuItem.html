@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <title>Restaurants - Delete Menu Item</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<div data-role="page">
+
+    <header data-role="header">
+        <h1 class="ui-title" role="heading">Delete menu item</h1>
+        <a href="{{url_for('show_restaurants')}}" rel="external" data-role="button" data-icon="home"
+           data-iconpos="notext" title="Home">Home</a>
+    </header>
+    <!-- /header -->
+
+    <div data-role="content">
+        <p>Are you sure you want to delete:</p>
+
+        <h3 class="center">{{item.name}}<br>{{item.description}}<br>{{item.price}}</h3>
+        <form id="delete-menu-item-form" action="{{url_for('delete_menu_item', restaurant_id=restaurant.id, menu_id=item.id)}}" method="POST" target="_parent">
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a"><a href="#" data-role="button" data-rel="back" data-theme="c">Cancel</a></div>
+            <div class="ui-block-b"><button type="submit" data-role="button" data-transition="flow" data-theme="b"
+                                       id="btn-add-new-ok">Ok</button></div>
+        </fieldset>
+    </div>
+    <!-- /content -->
+
+    <div data-role="footer">
+        <h4>Coded by Davide Nastri</h4>
+    </div>
+    <!-- /footer -->
+
+</div>
+<!-- /page -->
+<script src="/static/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <title>Restaurants</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<div data-role="page" id="restaurants">
+    <div data-role="header" id="header" data-position="gears">
+        <a id="btn-add-new" class="modify-buttons" href="{{url_for('new_restaurant')}}" data-iconpos="notext"
+           data-inset="true"
+           data-role="button" data-icon="plus" title="Add new restaurant">Add new</a>
+        <a id="btn-edit" class="ui-btn-right" href="#" data-iconpos="notext" data-role="button"
+           data-icon="gear">Modify</a>
+
+        <h1>Restaurants list</h1>
+    </div>
+    <!-- /header -->
+    <div data-role="content">
+        <ul data-role="listview" data-filter="true" data-inset="true">
+            {% for restaurant in restaurants %}
+
+            <li>
+                <a href="{{url_for('show_menu',restaurant_id = restaurant.id)}}" rel="external">{{ restaurant.name
+                    }}</a>
+
+                <div id="btn-edit-delete" class="modify-buttons ui-btn-right" data-mini="true" data-role="controlgroup"
+                     data-type="horizontal">
+                    <a href="{{url_for('edit_restaurant',restaurant_id = restaurant.id)}}" data-role="button"
+                       data-icon="edit" data-iconpos="notext"
+                       data-tip="Edit restaurant" title="Edit restaurant">Edit</a>
+                    <a href="{{url_for('delete_restaurant',restaurant_id = restaurant.id)}}" data-role="button"
+                       data-icon="delete" data-iconpos="notext"
+                       data-tip="Delete restaurant" title="Delete restaurant">Delete</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- /content -->
+    <div data-role="footer">
+        <h4>Coded by Davide Nastri</h4>
+    </div>
+    <!-- /footer -->
+</div>
+<!-- /page -->
+<script src="/static/custom.js"></script>
+</body>
+</html>

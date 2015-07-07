@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <title>Restaurants - Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<div data-role="page" id="menu">
+
+
+    <header data-role="header">
+        <h1 class="ui-title" role="heading">{{ restaurant.name }}</h1>
+
+
+    <div class="ui-btn-left">
+
+        <a href="{{url_for('show_restaurants')}}" data-role="button"
+           data-icon="home" data-iconpos="notext" data-corners="true"
+           data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Home" rel="external">
+        </a>
+        <a id="btn-add-new" href="{{url_for('new_menu_item',restaurant_id = restaurant.id)}}" data-role="button"
+           data-icon="plus" data-iconpos="notext" data-direction="reverse" data-corners="true"
+           data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Add new menu item" rel="external">
+        </a>
+    </div>
+
+        <a id="btn-edit" class="ui-btn-right" href="#" data-icon="gear" data-iconpos="notext">Edit</a>
+    </header>
+    <!-- /header -->
+    <div data-role="content">
+        <div class="modify-buttons"></div>
+        <ul data-role="listview" data-filter="true" data-inset="true">
+            {% for item in items %}
+            <li>
+                <h3>{{ item.name }}</h3>
+
+                <p><em>{{ item.description }}</em>
+
+                <p class="ui-li-count">{{ item.price }}</p>
+
+                <div id="btn-edit-delete" class="modify-buttons ui-btn-right" data-mini="true" data-role="controlgroup"
+                     data-type="horizontal">
+                    <a href="{{url_for('edit_menu_item',restaurant_id = restaurant.id, menu_id=item.id)}}"
+                       data-role="button" data-icon="edit" data-iconpos="notext"
+                       data-tip="Edit restaurant" title="Edit menu item">Edit</a>
+                    <a href="{{url_for('delete_menu_item',restaurant_id = restaurant.id, menu_id=item.id)}}"
+                       data-role="button" data-icon="delete" data-iconpos="notext"
+                       data-tip="Delete restaurant" title="Delete menu item">Delete</a>
+                </div>
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- /content -->
+    <div data-role="footer">
+        <h4>Coded by Davide Nastri</h4>
+    </div>
+    <!-- /footer -->
+</div>
+<!-- /page -->
+<script src="/static/custom.js"></script>
+</body>
+</html>
