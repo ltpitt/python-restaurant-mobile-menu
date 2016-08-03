@@ -11,6 +11,7 @@ Restaurant Mobile Menu is a sqlite based Python web-application that allows you 
 * Python (<3) is required. If you have Linux or Mac you should be good to go and you should skip to the next step, if you're on Windows get it from: http://ninite.com
 * Clone the repository or simply download it as a zip file and unzip it on your pc
 * Pip will make your life easier when you need to install dependencies: http://pip.readthedocs.org/en/stable/installing/
+* If you did not install setuptools type "sudo pip install -U setuptools" (check your os version if you are not using Linux)
 * Type "pip install -r requirements.txt" to install dependencies
 * Type "python database_setup.py" to initialize the database
 * Type "python lotsofmenus.py" to populate the database with restaurants and menu items. (Optional)
